@@ -1,46 +1,652 @@
 [
   {
     "id": 1,
-    "question": "Python mein list aur tuple mein kya farak hai?",
-    "type": "text",
-    "marks": 10
+    "question": "The ASA Physical Status Classification is primarily used for:",
+    "type": "mcq",
+    "options": [
+      "Airway assessment",
+      "Risk stratification before anesthesia",
+      "Pain scoring",
+      "ICU discharge planning"
+    ],
+    "correct": 1,
+    "marks": 1
   },
   {
     "id": 2,
-    "question": "OOP ke 4 pillars kaunse hain?",
+    "question": "Which drug is most commonly used for induction of general anesthesia?",
     "type": "mcq",
     "options": [
-      "Encapsulation, Inheritance, Polymorphism, Abstraction",
-      "Class, Object, Method, Function",
-      "List, Tuple, Dict, Set",
-      "Input, Output, Process, Storage"
+      "Atropine",
+      "Propofol",
+      "Digoxin",
+      "Furosemide"
     ],
-    "correct": 0,
-    "marks": 5
+    "correct": 1,
+    "marks": 1
   },
   {
     "id": 3,
-    "question": "Recursion kya hoti hai? Example ke saath explain karo.",
-    "type": "text",
-    "marks": 10
+    "question": "The gold standard for securing the airway is:",
+    "type": "mcq",
+    "options": [
+      "Face mask ventilation",
+      "Nasal cannula",
+      "Endotracheal intubation",
+      "Oropharyngeal airway"
+    ],
+    "correct": 2,
+    "marks": 1
   },
   {
     "id": 4,
-    "question": "Python mein decorator kya hota hai?",
+    "question": "Which inhalational anesthetic has the lowest blood-gas solubility and fastest induction?",
     "type": "mcq",
     "options": [
-      "Ek function jo doosre function ko wrap karta hai",
-      "Ek class ka variable",
-      "Ek loop ka type",
-      "Inme se koi nahi"
+      "Halothane",
+      "Isoflurane",
+      "Sevoflurane",
+      "Desflurane"
     ],
-    "correct": 0,
-    "marks": 5
+    "correct": 3,
+    "marks": 1
   },
   {
     "id": 5,
-    "question": "Time complexity kya hoti hai? Big-O notation explain karo.",
-    "type": "text",
-    "marks": 10
+    "question": "Pulse oximetry measures:",
+    "type": "mcq",
+    "options": [
+      "Blood pressure",
+      "Oxygen saturation (SpO₂)",
+      "Cardiac output",
+      "Intracranial pressure"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 6,
+    "question": "Spinal anesthesia is commonly administered into the:",
+    "type": "mcq",
+    "options": [
+      "Epidural space",
+      "Subarachnoid space",
+      "Pleural cavity",
+      "Peritoneal cavity"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 7,
+    "question": "Fiberoptic intubation is particularly useful in:",
+    "type": "mcq",
+    "options": [
+      "Routine airway management",
+      "Difficult airway cases",
+      "Regional anesthesia",
+      "Pediatric sedation only"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 8,
+    "question": "Which monitor is used to estimate depth of anesthesia?",
+    "type": "mcq",
+    "options": [
+      "ECG",
+      "BIS monitor",
+      "Pulse oximeter",
+      "Spirometer"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 9,
+    "question": "Transesophageal echocardiography (TEE) is most commonly used during:",
+    "type": "mcq",
+    "options": [
+      "Ophthalmic surgery",
+      "Cardiac surgery",
+      "Dental surgery",
+      "Dermatologic procedures"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 10,
+    "question": "The immediate postoperative period is primarily managed in the:",
+    "type": "mcq",
+    "options": [
+      "Ward",
+      "Recovery room (PACU)",
+      "Laboratory",
+      "Radiology suite"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 11,
+    "question": "The most common cause of postoperative hypoxemia is:",
+    "type": "mcq",
+    "options": [
+      "Hypertension",
+      "Atelectasis",
+      "Hyperglycemia",
+      "Anemia"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 12,
+    "question": "Neuropathic pain is commonly treated with:",
+    "type": "mcq",
+    "options": [
+      "Antibiotics",
+      "Gabapentin",
+      "Antacids",
+      "Diuretics"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 13,
+    "question": "The normal end-tidal CO₂ (EtCO₂) range is approximately:",
+    "type": "mcq",
+    "options": [
+      "10–20 mmHg",
+      "20–30 mmHg",
+      "35–45 mmHg",
+      "50–60 mmHg"
+    ],
+    "correct": 2,
+    "marks": 1
+  },
+  {
+    "id": 14,
+    "question": "The narrowest part of the pediatric airway is traditionally considered the:",
+    "type": "mcq",
+    "options": [
+      "Vocal cords",
+      "Cricoid cartilage",
+      "Trachea",
+      "Nasopharynx"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 15,
+    "question": "Neonates have a higher oxygen consumption than adults because of:",
+    "type": "mcq",
+    "options": [
+      "Increased metabolic rate",
+      "Larger lungs",
+      "Lower cardiac output",
+      "Increased hemoglobin"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 16,
+    "question": "Which inhalational agent is commonly preferred for pediatric mask induction?",
+    "type": "mcq",
+    "options": [
+      "Desflurane",
+      "Nitrous oxide only",
+      "Sevoflurane",
+      "Halothane only"
+    ],
+    "correct": 2,
+    "marks": 1
+  },
+  {
+    "id": 17,
+    "question": "The most commonly used method of labor analgesia is:",
+    "type": "mcq",
+    "options": [
+      "General anesthesia",
+      "Epidural analgesia",
+      "Local infiltration",
+      "Sedation alone"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 18,
+    "question": "Spinal anesthesia is frequently used for:",
+    "type": "mcq",
+    "options": [
+      "Thyroidectomy",
+      "Cesarean section",
+      "Cataract surgery",
+      "Bronchoscopy"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 19,
+    "question": "Magnesium sulfate is used in obstetrics to manage:",
+    "type": "mcq",
+    "options": [
+      "Gestational diabetes",
+      "Eclampsia",
+      "Placenta previa",
+      "Anemia"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 20,
+    "question": "During craniotomy, anesthetic management aims to:",
+    "type": "mcq",
+    "options": [
+      "Increase intracranial pressure",
+      "Maintain cerebral perfusion",
+      "Cause hypertension",
+      "Eliminate ventilation"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 21,
+    "question": "Bariatric surgery patients are at increased risk of:",
+    "type": "mcq",
+    "options": [
+      "Difficult airway",
+      "Hypothermia only",
+      "Bradycardia only",
+      "Hypercalcemia"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 22,
+    "question": "One-lung ventilation is commonly required during:",
+    "type": "mcq",
+    "options": [
+      "Thoracic surgery",
+      "Cataract surgery",
+      "Hernia repair",
+      "Colonoscopy"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 23,
+    "question": "CABG stands for:",
+    "type": "mcq",
+    "options": [
+      "Coronary Artery Bypass Grafting",
+      "Cardiac Arterial Blood Gas",
+      "Coronary Aortic Balloon Guide",
+      "Cardiac Anesthesia Basic Guideline"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 24,
+    "question": "The most common intraoperative arrhythmia is:",
+    "type": "mcq",
+    "options": [
+      "Atrial fibrillation",
+      "Sinus tachycardia",
+      "Ventricular fibrillation",
+      "Complete heart block"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 25,
+    "question": "TEE provides real-time assessment of:",
+    "type": "mcq",
+    "options": [
+      "Liver function",
+      "Cardiac structure and function",
+      "Renal blood flow only",
+      "Pulmonary function"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 26,
+    "question": "ERAS stands for:",
+    "type": "mcq",
+    "options": [
+      "Enhanced Recovery After Surgery",
+      "Emergency Response Anesthesia Service",
+      "Early Recovery Analgesic Strategy",
+      "Enhanced Regional Anesthesia System"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 27,
+    "question": "Multimodal analgesia aims to:",
+    "type": "mcq",
+    "options": [
+      "Use one drug only",
+      "Reduce opioid requirements",
+      "Increase sedation",
+      "Delay recovery"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 28,
+    "question": "Hemorrhagic shock is primarily treated with:",
+    "type": "mcq",
+    "options": [
+      "Diuretics",
+      "Fluid and blood resuscitation",
+      "Sedatives",
+      "Antibiotics"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 29,
+    "question": "In trauma patients, cervical spine injury must be assumed until:",
+    "type": "mcq",
+    "options": [
+      "Surgery",
+      "Excluded clinically and radiologically",
+      "ICU admission",
+      "Discharge"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 30,
+    "question": "The Parkland formula is used in:",
+    "type": "mcq",
+    "options": [
+      "Stroke",
+      "Burn resuscitation",
+      "Asthma",
+      "Renal failure"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 31,
+    "question": "An intrathecal pump delivers medication directly into the:",
+    "type": "mcq",
+    "options": [
+      "Epidural space",
+      "Subarachnoid space",
+      "Pleural cavity",
+      "Peritoneum"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 32,
+    "question": "Which nerve block is commonly used for postoperative knee surgery pain?",
+    "type": "mcq",
+    "options": [
+      "Femoral nerve block",
+      "Facial nerve block",
+      "Intercostal block",
+      "Pudendal block"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 33,
+    "question": "Spinal cord stimulation is used primarily for:",
+    "type": "mcq",
+    "options": [
+      "Acute appendicitis",
+      "Chronic refractory pain",
+      "Hypertension",
+      "Pneumonia"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 34,
+    "question": "CRM in anesthesia stands for:",
+    "type": "mcq",
+    "options": [
+      "Clinical Resource Monitoring",
+      "Crisis Resource Management",
+      "Cardiac Recovery Management",
+      "Clinical Risk Mitigation"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 35,
+    "question": "High-fidelity simulation is mainly used to:",
+    "type": "mcq",
+    "options": [
+      "Replace clinical practice entirely",
+      "Improve crisis management skills",
+      "Reduce monitoring",
+      "Eliminate teamwork"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 36,
+    "question": "Patients with Obstructive Sleep Apnea are at increased risk of:",
+    "type": "mcq",
+    "options": [
+      "Difficult airway and postoperative respiratory complications",
+      "Hyperthyroidism",
+      "Liver failure",
+      "Leukemia"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 37,
+    "question": "In chronic kidney disease, which drug may have prolonged effects?",
+    "type": "mcq",
+    "options": [
+      "Atracurium",
+      "Cisatracurium",
+      "Pancuronium",
+      "Oxygen"
+    ],
+    "correct": 2,
+    "marks": 1
+  },
+  {
+    "id": 38,
+    "question": "Diabetic patients undergoing surgery require close monitoring of:",
+    "type": "mcq",
+    "options": [
+      "Hemoglobin only",
+      "Blood glucose",
+      "Calcium only",
+      "Potassium only"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 39,
+    "question": "Informed consent must be:",
+    "type": "mcq",
+    "options": [
+      "Voluntary and informed",
+      "Obtained after surgery",
+      "Given by staff only",
+      "Optional"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 40,
+    "question": "Accurate anesthesia documentation is important for:",
+    "type": "mcq",
+    "options": [
+      "Patient safety",
+      "Legal protection",
+      "Quality assurance",
+      "All of the above"
+    ],
+    "correct": 3,
+    "marks": 1
+  },
+  {
+    "id": 41,
+    "question": "Cerebral Perfusion Pressure (CPP) equals:",
+    "type": "mcq",
+    "options": [
+      "MAP − ICP",
+      "ICP − MAP",
+      "MAP + ICP",
+      "HR × BP"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 42,
+    "question": "Increased intracranial pressure may cause:",
+    "type": "mcq",
+    "options": [
+      "Bradycardia",
+      "Hypertension",
+      "Altered consciousness",
+      "All of the above"
+    ],
+    "correct": 3,
+    "marks": 1
+  },
+  {
+    "id": 43,
+    "question": "Brain death testing is important in:",
+    "type": "mcq",
+    "options": [
+      "Organ donation",
+      "Dental surgery",
+      "Cataract surgery",
+      "Colonoscopy"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 44,
+    "question": "A major challenge in low-resource anesthesia settings is:",
+    "type": "mcq",
+    "options": [
+      "Excess equipment",
+      "Limited access to anesthesia services",
+      "Excess workforce",
+      "Excess ICU beds"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 45,
+    "question": "Field anesthesia often requires:",
+    "type": "mcq",
+    "options": [
+      "Resource adaptability",
+      "Unlimited monitoring",
+      "Full hospital infrastructure",
+      "Cardiac catheterization labs"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 46,
+    "question": "CME stands for:",
+    "type": "mcq",
+    "options": [
+      "Clinical Monitoring Evaluation",
+      "Continuing Medical Education",
+      "Critical Management Exercise",
+      "Clinical Medical Examination"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 47,
+    "question": "Professional societies in anesthesia support:",
+    "type": "mcq",
+    "options": [
+      "Education and networking",
+      "Litigation only",
+      "Hospital billing",
+      "Drug manufacturing"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 48,
+    "question": "A meta-analysis combines results from:",
+    "type": "mcq",
+    "options": [
+      "One case report",
+      "Multiple studies",
+      "One hospital",
+      "One patient"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 49,
+    "question": "Artificial intelligence in anesthesia may assist with:",
+    "type": "mcq",
+    "options": [
+      "Predictive monitoring",
+      "Decision support",
+      "Risk assessment",
+      "All of the above"
+    ],
+    "correct": 3,
+    "marks": 1
+  },
+  {
+    "id": 50,
+    "question": "Research ethics primarily protects:",
+    "type": "mcq",
+    "options": [
+      "Investigators only",
+      "Study participants",
+      "Journals only",
+      "Sponsors only"
+    ],
+    "correct": 1,
+    "marks": 1
   }
 ]
