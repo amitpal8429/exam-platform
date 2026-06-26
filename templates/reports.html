@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Exam Portal</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',sans-serif;background:#0d0f18;color:#e2e8f0;padding:24px}
+        .container{max-width:1200px;margin:0 auto}
+        h1{color:#7c6ff7;font-size:24px;margin-bottom:4px}
+        .sub{color:#475569;margin-bottom:24px}
+        .card{background:#13162a;border:1px solid #1e2340;border-radius:12px;padding:20px;margin-bottom:20px}
+        table{width:100%;border-collapse:collapse;font-size:13px}
+        th{color:#334155;font-weight:500;text-align:left;padding:8px 10px;border-bottom:1px solid #1e2340;font-size:11px;text-transform:uppercase}
+        td{padding:10px;border-bottom:1px solid #13162a;color:#cbd5e1}
+        tr:hover td{background:#1a1d2e55}
+        .badge{display:inline-block;padding:2px 10px;border-radius:99px;font-size:11px;font-weight:600}
+        .badge.done{background:#14532d33;color:#4ade80;border:1px solid #4ade8033}
+        .badge.live{background:#2d1f6e33;color:#a78bfa;border:1px solid #7c6ff733}
+        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+        .stat-box{background:#13162a;border:1px solid #1e2340;border-radius:10px;padding:14px;text-align:center}
+        .stat-number{font-size:24px;font-weight:700;color:#f1f5f9}
+        .stat-label{font-size:11px;color:#475569;margin-top:3px}
+        .empty{color:#334155;padding:20px;text-align:center}
+        .nav-link{color:#7c6ff7;text-decoration:none}
+        .nav-link:hover{text-decoration:underline}
+        .back-btn{display:inline-block;margin-top:20px;color:#7c6ff7;text-decoration:none}
+        .back-btn:hover{text-decoration:underline}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📊 Exam Reports</h1>
+    <div class="sub">All student submissions and performance</div>
+
+    <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-number">{{ reports|length }}</div>
+            <div class="stat-label">Total Submissions</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number" style="color:#4ade80">
+                {{ reports|selectattr('submitted','equalto',True)|list|length }}
+            </div>
+            <div class="stat-label">✅ Completed</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number" style="color:#a78bfa">
+                {{ reports|sum(attribute='answers')|default(0) }}
+            </div>
+            <div class="stat-label">📝 Total Answers</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number" style="color:#f87171">
+                {{ reports|sum(attribute='alerts')|default(0) }}
+            </div>
+            <div class="stat-label">⚠️ Total Alerts</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📋 Submission Details</h2>
+        {% if reports %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Status</th>
+                    <th>Answers</th>
+                    <th>Alerts</th>
+                    <th>Start Time</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in reports %}
+                <tr>
+                    <td style="font-weight:600;color:#f1f5f9">{{ r.student }}</td>
+                    <td>
+                        {% if r.submitted %}
+                        <span class="badge done">✅ Completed</span>
+                        {% else %}
+                        <span class="badge live">● In Progress</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ r.answers }}</td>
+                    <td style="color:{% if r.alerts > 5 %}#f87171{% elif r.alerts > 2 %}#f59e0b{% else %}#4ade80{% endif %}">
+                        {{ r.alerts }}
+                    </td>
+                    <td style="font-size:11px;color:#475569">{{ r.start_time[11:19] if r.start_time else '--' }}</td>
+                    <td style="font-size:11px;color:#475569">
+                        {% if r.start_time and r.end_time %}
+                        {% set diff = (r.end_time|replace('T',' ')|replace('Z','')|replace('-','')|replace(':','')|replace(' ','')|int - r.start_time|replace('T',' ')|replace('Z','')|replace('-','')|replace(':','')|replace(' ','')|int) / 100 %}
+                        {{ diff|round|int }} mins
+                        {% else %}
+                        --
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="empty">📭 No submissions yet. Students will appear here after completing exams.</div>
+        {% endif %}
+    </div>
+
+    <a href="/admin" class="back-btn">← Back to Admin Panel</a>
+</div>
+</body>
+</html>

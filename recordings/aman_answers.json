@@ -1,0 +1,16 @@
+{
+  "student_id": "aman",
+  "start_time": "2026-06-25T16:09:49.691160",
+  "answers": {},
+  "submitted": true,
+  "video_saved": false,
+  "video_file": null,
+  "alerts": [
+    {
+      "time": "16:10:18",
+      "alert": "Screen share stopped"
+    }
+  ],
+  "chunk_count": 0,
+  "end_time": "2026-06-25T16:10:23.524571"
+}

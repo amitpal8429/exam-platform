@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Exam Links</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',sans-serif;background:#0d0f18;color:#e2e8f0;padding:24px}
+        .container{max-width:900px;margin:0 auto}
+        h1{color:#7c6ff7;font-size:24px;margin-bottom:4px}
+        .sub{color:#475569;margin-bottom:24px}
+        .card{background:#13162a;border:1px solid #1e2340;border-radius:12px;padding:20px;margin-bottom:20px}
+        .card h2{color:#a78bfa;font-size:16px;margin-bottom:16px}
+        .url-box{background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:12px;display:flex;gap:10px;align-items:center;margin-bottom:10px}
+        .url-box input{flex:1;background:transparent;border:none;color:#a78bfa;font-size:13px;font-family:monospace}
+        .url-box input:focus{outline:none}
+        .btn{background:#7c6ff7;border:none;border-radius:8px;color:#fff;padding:10px 20px;font-weight:600;cursor:pointer}
+        .btn:hover{background:#6d5fe6}
+        .btn-success{background:#22c55e}
+        .btn-success:hover{background:#16a34a}
+        .btn-group{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+        table{width:100%;border-collapse:collapse;font-size:13px}
+        th{color:#334155;text-align:left;padding:8px 10px;border-bottom:1px solid #1e2340;font-size:11px;text-transform:uppercase}
+        td{padding:8px 10px;border-bottom:1px solid #13162a;color:#cbd5e1}
+        tr:hover td{background:#1a1d2e55}
+        .copy-btn{background:none;border:1px solid #3d4263;border-radius:6px;color:#64748b;font-size:11px;padding:3px 10px;cursor:pointer}
+        .copy-btn:hover{background:#2d3148}
+        .student-input{display:flex;gap:10px;margin-bottom:16px}
+        .student-input input{flex:1;background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:9px 12px;color:#e2e8f0;font-size:13px}
+        .student-input input:focus{outline:none;border-color:#7c6ff7}
+        .notification{position:fixed;bottom:20px;right:20px;background:#13162a;border:1px solid #22c55e;border-radius:12px;padding:16px 24px;color:#e2e8f0;display:none;z-index:1000}
+        .notification.show{display:block;animation:slideIn 0.5s ease}
+        @keyframes slideIn{from{transform:translateY(100px);opacity:0}to{transform:translateY(0);opacity:1}}
+        .copy-all{display:flex;gap:10px;margin:10px 0}
+        .copy-all textarea{flex:1;background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:9px;color:#e2e8f0;font-family:monospace;font-size:12px;resize:vertical}
+        .back-link{color:#7c6ff7;text-decoration:none;display:inline-block;margin-top:20px}
+        .back-link:hover{text-decoration:underline}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🔗 Generate Exam Links</h1>
+    <div class="sub">Create and share exam links with students</div>
+
+    <div class="card">
+        <h2>🌐 Your Public Exam URL</h2>
+        <div class="url-box">
+            <input type="text" id="baseUrl" value="{{ public_url }}" readonly>
+            <button class="btn" onclick="copyBaseUrl()">📋 Copy</button>
+        </div>
+        <p style="color:#475569;font-size:12px">Add <strong style="color:#a78bfa">/exam/student_name</strong> to create student links</p>
+    </div>
+
+    <div class="card">
+        <h2>➕ Add Student Manually</h2>
+        <div class="student-input">
+            <input type="text" id="studentName" placeholder="Enter student name (e.g., rahul, priya)">
+            <button class="btn btn-success" onclick="addStudent()">➕ Add & Get Link</button>
+        </div>
+        <div id="newLink" style="display:none;margin-top:10px;background:#1a1d2e;border:1px solid #22c55e;border-radius:8px;padding:10px;color:#4ade80"></div>
+    </div>
+
+    <div class="card">
+        <h2>📋 Student List & Links</h2>
+        <div class="copy-all">
+            <textarea id="allLinks" rows="3" placeholder="All links will appear here..."></textarea>
+            <button class="btn" onclick="copyAllLinks()" style="height:fit-content">📋 Copy All</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Student</th>
+                    <th>Exam Link</th>
+                    <th>Copy</th>
+                </tr>
+            </thead>
+            <tbody id="studentTableBody">
+                {% for link in links %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td style="font-weight:600;color:#f1f5f9">{{ link.name }}</td>
+                    <td style="font-size:12px;color:#a78bfa;word-break:break-all">{{ link.url }}</td>
+                    <td><button class="copy-btn" onclick="copyLink('{{ link.url }}')">Copy</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if not links %}
+        <div style="color:#475569;padding:20px;text-align:center">No students added yet. Add a student above.</div>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <h2>📤 Bulk Add Students</h2>
+        <textarea id="bulkStudents" rows="4" placeholder="Enter student names, one per line:&#10;rahul&#10;priya&#10;amit&#10;sneha" style="width:100%;background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:12px;color:#e2e8f0;font-family:monospace;font-size:13px"></textarea>
+        <div class="btn-group">
+            <button class="btn btn-success" onclick="bulkAdd()">📤 Bulk Add</button>
+            <button class="btn" onclick="generateBatchLinks()">📋 Generate Batch</button>
+        </div>
+    </div>
+
+    <a href="/admin" class="back-link">← Back to Admin Panel</a>
+</div>
+
+<div class="notification" id="notification">
+    <span id="notificationMsg">✅ Copied!</span>
+</div>
+
+<script>
+let students = {{ links|tojson }};
+
+function addStudent() {
+    const nameInput = document.getElementById('studentName');
+    const name = nameInput.value.trim();
+
+    if (!name) {
+        showNotification('⚠️ Please enter a student name');
+        return;
+    }
+
+    if (students.find(s => s.name === name)) {
+        showNotification('⚠️ Student already exists!');
+        return;
+    }
+
+    const baseUrl = document.getElementById('baseUrl').value;
+    const url = `${baseUrl}/exam/${encodeURIComponent(name)}`;
+
+    students.push({ name, url });
+    updateTable();
+    updateAllLinks();
+
+    const newLinkDiv = document.getElementById('newLink');
+    newLinkDiv.style.display = 'block';
+    newLinkDiv.innerHTML = `✅ Link for <strong>${name}</strong>: <a href="${url}" target="_blank" style="color:#a78bfa">${url}</a>`;
+
+    nameInput.value = '';
+    showNotification(`✅ Link generated for ${name}`);
+}
+
+function bulkAdd() {
+    const text = document.getElementById('bulkStudents').value;
+    const names = text.split('\n').map(s => s.trim()).filter(s => s);
+
+    if (names.length === 0) {
+        showNotification('⚠️ Please enter at least one name');
+        return;
+    }
+
+    const baseUrl = document.getElementById('baseUrl').value;
+    let added = 0;
+
+    names.forEach(name => {
+        if (!students.find(s => s.name === name)) {
+            const url = `${baseUrl}/exam/${encodeURIComponent(name)}`;
+            students.push({ name, url });
+            added++;
+        }
+    });
+
+    updateTable();
+    updateAllLinks();
+    showNotification(`✅ Added ${added} new students`);
+    document.getElementById('bulkStudents').value = '';
+}
+
+function generateBatchLinks() {
+    const text = document.getElementById('bulkStudents').value;
+    const names = text.split('\n').map(s => s.trim()).filter(s => s);
+
+    if (names.length === 0) {
+        showNotification('⚠️ Please enter student names');
+        return;
+    }
+
+    const baseUrl = document.getElementById('baseUrl').value;
+    let linksHtml = '';
+
+    names.forEach(name => {
+        const url = `${baseUrl}/exam/${encodeURIComponent(name)}`;
+        linksHtml += `${name}: ${url}\n`;
+    });
+
+    document.getElementById('allLinks').value = linksHtml;
+    showNotification(`✅ Generated ${names.length} links in text area`);
+}
+
+function updateTable() {
+    const tbody = document.getElementById('studentTableBody');
+    tbody.innerHTML = '';
+
+    students.forEach((student, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td style="font-weight:600;color:#f1f5f9">${student.name}</td>
+            <td style="font-size:12px;color:#a78bfa;word-break:break-all">${student.url}</td>
+            <td><button class="copy-btn" onclick="copyLink('${student.url}')">Copy</button></td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function updateAllLinks() {
+    const textarea = document.getElementById('allLinks');
+    textarea.value = students.map(s => `${s.name}: ${s.url}`).join('\n');
+}
+
+function copyLink(url) {
+    navigator.clipboard.writeText(url).then(() => {
+        showNotification('✅ Link copied!');
+    });
+}
+
+function copyBaseUrl() {
+    const input = document.getElementById('baseUrl');
+    input.select();
+    navigator.clipboard.writeText(input.value).then(() => {
+        showNotification('✅ Base URL copied!');
+    });
+}
+
+function copyAllLinks() {
+    const textarea = document.getElementById('allLinks');
+    textarea.select();
+    navigator.clipboard.writeText(textarea.value).then(() => {
+        showNotification('✅ All links copied!');
+    });
+}
+
+function showNotification(msg) {
+    const notif = document.getElementById('notification');
+    document.getElementById('notificationMsg').textContent = msg;
+    notif.classList.add('show');
+    setTimeout(() => {
+        notif.classList.remove('show');
+    }, 3000);
+}
+
+document.getElementById('studentName').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') addStudent();
+});
+
+updateAllLinks();
+</script>
+</body>
+</html>

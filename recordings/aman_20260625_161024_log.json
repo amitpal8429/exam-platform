@@ -1,0 +1,13 @@
+{
+  "student": "aman",
+  "start_time": "2026-06-25T16:09:49.691160",
+  "end_time": "2026-06-25T16:10:24.488690",
+  "video_file": "aman_cam_20260625_161024_FINAL.webm",
+  "alerts": [
+    {
+      "time": "16:10:18",
+      "alert": "Screen share stopped"
+    }
+  ],
+  "answers": {}
+}

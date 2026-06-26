@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8"><title>Admin Panel</title>
+<meta http-equiv="refresh" content="10">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',sans-serif;background:#0d0f18;color:#e2e8f0;padding:24px}
+.container{max-width:1400px;margin:0 auto}
+h1{font-size:22px;color:#7c6ff7;margin-bottom:4px}
+.sub{font-size:13px;color:#475569;margin-bottom:6px}
+.note{font-size:11px;color:#334155;margin-bottom:24px}
+.note a{color:#7c6ff7;text-decoration:none}
+.top-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:22px}
+.ts{background:#13162a;border:1px solid #1e2340;border-radius:10px;padding:14px;text-align:center}
+.ts-n{font-size:26px;font-weight:700;color:#f1f5f9}
+.ts-l{font-size:11px;color:#475569;margin-top:3px}
+.url-card{background:#13162a;border:1px solid #1e2340;border-radius:12px;padding:18px;margin-bottom:20px}
+.url-card h2{font-size:12px;font-weight:700;color:#475569;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.url-row{display:flex;gap:8px;flex-wrap:wrap}
+.url-inp{flex:1;background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:9px 12px;color:#e2e8f0;font-size:13px;font-family:inherit;min-width:150px}
+.url-inp:focus{outline:none;border-color:#7c6ff7}
+.gen-btn{background:#7c6ff7;border:none;border-radius:8px;color:#fff;font-size:13px;font-weight:600;padding:9px 16px;cursor:pointer}
+.gen-btn:hover{background:#6d5fe6}
+.url-out{display:none;margin-top:10px;background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:10px 12px;font-size:12px;font-family:monospace;color:#a78bfa;align-items:center;justify-content:space-between;gap:8px;word-break:break-all}
+.url-out.show{display:flex}
+.copy-btn{background:none;border:1px solid #3d4263;border-radius:6px;color:#64748b;font-size:11px;padding:3px 10px;cursor:pointer}
+.copy-btn:hover{background:#2d3148}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:#13162a;border:1px solid #1e2340;border-radius:12px;padding:18px}
+.card h2{font-size:12px;font-weight:700;color:#475569;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{color:#334155;font-weight:500;text-align:left;padding:6px 10px;border-bottom:1px solid #1e2340;font-size:11px;text-transform:uppercase}
+td{padding:10px;border-bottom:1px solid #13162a;color:#cbd5e1}
+tr:last-child td{border:none}
+tr:hover td{background:#1a1d2e55}
+.bdg{display:inline-block;padding:2px 10px;border-radius:99px;font-size:11px;font-weight:600}
+.bdg.done{background:#14532d33;color:#4ade80;border:1px solid #4ade8033}
+.bdg.live{background:#2d1f6e33;color:#a78bfa;border:1px solid #7c6ff733;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+.file-list{list-style:none}
+.fi{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #1a1d2e;font-size:12px}
+.fi:last-child{border:none}
+.fi-name{color:#94a3b8;word-break:break-all;flex:1}
+.fi-size{color:#334155;font-size:11px;margin:0 10px;white-space:nowrap}
+.dl{color:#7c6ff7;text-decoration:none;font-size:11px;font-weight:600;padding:3px 10px;border:1px solid #7c6ff744;border-radius:6px;white-space:nowrap}
+.dl:hover{background:#7c6ff722}
+.empty{color:#334155;font-size:13px;padding:10px 0;line-height:1.8}
+.folder-card{background:#13162a;border:1px solid #1e2340;border-radius:12px;padding:18px;margin-bottom:18px}
+.fi-folder{color:#a78bfa}
+.notification{position:fixed;bottom:20px;right:20px;background:#13162a;border:1px solid #22c55e;border-radius:12px;padding:16px 24px;color:#e2e8f0;display:none;z-index:1000;max-width:400px}
+.notification.show{display:block;animation:slideIn 0.5s ease}
+@keyframes slideIn{from{transform:translateY(100px);opacity:0}to{transform:translateY(0);opacity:1}}
+.quick-links{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:10px}
+.quick-link{background:#1a1d2e;border:1px solid #2d3148;border-radius:6px;padding:6px 10px;font-size:11px;color:#94a3b8;text-align:center;cursor:pointer}
+.quick-link:hover{background:#2d3148;color:#e2e8f0}
+@media(max-width:768px){.grid{grid-template-columns:1fr}.top-stats{grid-template-columns:repeat(2,1fr)}.quick-links{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>⬡ ExamPortal Admin</h1>
+<div class="sub">Sab students ke exam, alerts aur recordings yahan dikhenge</div>
+<div class="note">
+    🔄 Har 10 sec mein auto-refresh —
+    <a href="/admin">Manual refresh</a> |
+    <a href="/admin/questions">📝 Manage Questions</a> |
+    <a href="/generate_links">🔗 Generate Links</a> |
+    <a href="/admin/reports">📊 Reports</a>
+</div>
+
+<div class="top-stats">
+  <div class="ts">
+    <div class="ts-n">{{ sessions|length }}</div>
+    <div class="ts-l">Total Students</div>
+  </div>
+  <div class="ts">
+    <div class="ts-n" style="color:#a78bfa">{{ sessions.values()|selectattr('submitted','equalto',False)|list|length }}</div>
+    <div class="ts-l">🟣 Live Exam</div>
+  </div>
+  <div class="ts">
+    <div class="ts-n" style="color:#4ade80">{{ sessions.values()|selectattr('submitted','equalto',True)|list|length }}</div>
+    <div class="ts-l">✅ Submitted</div>
+  </div>
+  <div class="ts">
+    <div class="ts-n">{{ files|length }}</div>
+    <div class="ts-l">📁 Total Files</div>
+  </div>
+  <div class="ts">
+    <div class="ts-n" style="color:#f59e0b">
+      {% set total_alerts = 0 %}
+      {% for sid, d in sessions.items() %}
+        {% if d.alerts is iterable and d.alerts is not string %}
+          {% set total_alerts = total_alerts + d.alerts|length %}
+        {% elif d.alerts is number %}
+          {% set total_alerts = total_alerts + d.alerts %}
+        {% endif %}
+      {% endfor %}
+      {{ total_alerts }}
+    </div>
+    <div class="ts-l">⚠️ Total Alerts</div>
+  </div>
+</div>
+
+<div class="url-card">
+  <h2>🔗 Student URL Generator</h2>
+  <div class="url-row">
+    <input class="url-inp" id="nameInp" type="text" placeholder="Student ka naam — jaise: rahul, priya">
+    <button class="gen-btn" onclick="genUrl()">🔗 URL Banao</button>
+    <button class="gen-btn" style="background:#22c55e" onclick="bulkGen()">📋 Bulk Generate</button>
+  </div>
+
+  <div class="bulk-area" id="bulkArea" style="display:none;margin-top:10px">
+    <textarea id="bulkNames" rows="3" placeholder="Student names (one per line):&#10;rahul&#10;priya&#10;amit&#10;sneha" style="width:100%;background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:9px 12px;color:#e2e8f0;font-family:monospace;font-size:12px"></textarea>
+    <div style="display:flex;gap:8px;margin-top:8px">
+      <button class="gen-btn" style="background:#22c55e;padding:6px 12px;font-size:12px" onclick="genBulkUrls()">Generate All</button>
+      <button class="gen-btn" style="background:#4ade80;padding:6px 12px;font-size:12px" onclick="copyAllUrls()">📋 Copy All</button>
+      <button class="gen-btn" style="background:#ef4444;padding:6px 12px;font-size:12px" onclick="closeBulk()">✕ Close</button>
+    </div>
+    <textarea id="bulkUrls" rows="4" placeholder="Generated URLs will appear here..." style="width:100%;background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:9px 12px;color:#a78bfa;font-family:monospace;font-size:12px;resize:vertical;display:none;margin-top:8px"></textarea>
+  </div>
+
+  <div class="url-out" id="urlOut">
+    <span id="urlTxt"></span>
+    <button class="copy-btn" onclick="copyUrl()">📋 Copy</button>
+  </div>
+
+  <div class="quick-links">
+    <div class="quick-link" onclick="quickStudent('rahul')">rahul</div>
+    <div class="quick-link" onclick="quickStudent('priya')">priya</div>
+    <div class="quick-link" onclick="quickStudent('amit')">amit</div>
+    <div class="quick-link" onclick="quickStudent('sneha')">sneha</div>
+    <div class="quick-link" onclick="quickStudent('vikram')">vikram</div>
+    <div class="quick-link" onclick="quickStudent('neha')">neha</div>
+  </div>
+
+  <div style="margin-top:10px;font-size:11px;color:#334155">
+    💡 Public URL: <span id="publicUrlDisplay" style="color:#a78bfa">{{ public_url if public_url else 'http://localhost:5000' }}</span>
+  </div>
+</div>
+
+{% if folders %}
+<div class="folder-card">
+  <h2>📁 Student Folders (Video Chunks)</h2>
+  <table>
+    <thead><tr><th>Student</th><th>Chunks</th><th>Status</th></tr></thead>
+    <tbody>
+      {% for f in folders %}
+      <tr>
+        <td class="fi-folder">📁 {{ f.name }}</td>
+        <td>{{ f.chunks }} files</td>
+        <td>
+          {% if f.name in sessions and sessions[f.name].submitted %}
+          <span class="bdg done">✅ Done</span>
+          {% elif f.name in sessions %}
+          <span class="bdg live">● Live</span>
+          {% else %}
+          <span style="color:#475569">📝 Incomplete</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+<div class="grid">
+  <div class="card">
+    <h2>👨‍🎓 Students</h2>
+    {% if sessions %}
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Start</th>
+          <th>Answers</th>
+          <th>Alerts</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sid, d in sessions.items() %}
+        <tr>
+          <td style="font-weight:600;color:#f1f5f9">{{ sid }}</td>
+          <td style="font-size:11px;color:#475569">{{ d.start_time[11:19] if d.start_time else '--' }}</td>
+          <td style="color:#94a3b8">
+            {% if d.answers is iterable and d.answers is not string %}
+              {{ d.answers|length }}
+            {% else %}
+              {{ d.answers|default(0) }}
+            {% endif %}
+          </td>
+          <td style="color:
+            {% if d.alerts is iterable and d.alerts is not string %}
+              {% if d.alerts|length > 5 %}#f87171
+              {% elif d.alerts|length > 2 %}#f59e0b
+              {% else %}#4ade80{% endif %}
+            {% else %}
+              {% if d.alerts > 5 %}#f87171
+              {% elif d.alerts > 2 %}#f59e0b
+              {% else %}#4ade80{% endif %}
+            {% endif %}">
+            {% if d.alerts is iterable and d.alerts is not string %}
+              {{ d.alerts|length }}
+            {% else %}
+              {{ d.alerts|default(0) }}
+            {% endif %}
+          </td>
+          <td>
+            {% if d.submitted %}
+            <span class="bdg done">✅ Done</span>
+            {% else %}
+            <span class="bdg live">● Live</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="empty">😴 Abhi koi student online nahi hai.<br>URL generate karo aur bhejo.</div>
+    {% endif %}
+  </div>
+
+  <div class="card">
+    <h2>📁 Recordings & Files</h2>
+    {% if files %}
+    <ul class="file-list">
+      {% for f in files %}
+      <li class="fi">
+        <span class="fi-name">{{ f.name }}</span>
+        <span class="fi-size">{{ f.size_mb }} MB</span>
+        {% if f.name.endswith('.webm') or f.name.endswith('.avi') or f.name.endswith('.json') %}
+        <a class="dl" href="/recordings/{{ f.name }}" download>⬇ Download</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="empty">📂 Koi file nahi mili abhi tak.<br>Students submit karenge toh yahan aayegi.</div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="card" style="margin-top:18px">
+  <h2>📝 Daily Questions Status</h2>
+  <div style="display:flex;gap:20px;flex-wrap:wrap;font-size:13px">
+    <div>
+      <span style="color:#475569">Questions File:</span>
+      <span style="color:#a78bfa" id="questionStatus">Loading...</span>
+    </div>
+    <div>
+      <span style="color:#475569">Total Questions:</span>
+      <span style="color:#f1f5f9" id="questionCount">0</span>
+    </div>
+    <div>
+      <span style="color:#475569">Last Updated:</span>
+      <span style="color:#94a3b8" id="lastUpdated">--</span>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="gen-btn" style="padding:4px 12px;font-size:11px" onclick="refreshQuestions()">🔄 Refresh</button>
+      <button class="gen-btn" style="background:#22c55e;padding:4px 12px;font-size:11px" onclick="runDailyUpload()">📅 Run Daily Upload</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="notification" id="notification">
+  <span id="notifMsg">✅ Copied!</span>
+</div>
+
+<script>
+const publicUrl = "{{ public_url if public_url else window.location.origin }}";
+let generatedUrls = [];
+
+function genUrl() {
+  const name = document.getElementById("nameInp").value.trim();
+  if (!name) {
+    showNotification('⚠️ Please enter a student name');
+    return;
+  }
+  const url = `${publicUrl}/exam/${encodeURIComponent(name)}`;
+  document.getElementById("urlTxt").textContent = url;
+  document.getElementById("urlOut").classList.add("show");
+  showNotification(`✅ URL generated for ${name}`);
+}
+
+function bulkGen() {
+  const area = document.getElementById("bulkArea");
+  if (area.style.display === "none") {
+    area.style.display = "block";
+    document.getElementById("bulkNames").focus();
+  } else {
+    area.style.display = "none";
+  }
+}
+
+function genBulkUrls() {
+  const names = document.getElementById("bulkNames").value.split('\n')
+    .map(s => s.trim()).filter(s => s);
+
+  if (names.length === 0) {
+    showNotification('⚠️ Please enter at least one name');
+    return;
+  }
+
+  const urls = names.map(name => `${publicUrl}/exam/${encodeURIComponent(name)}`);
+  generatedUrls = urls;
+
+  const textarea = document.getElementById("bulkUrls");
+  textarea.value = names.map((name, i) => `${name}: ${urls[i]}`).join('\n');
+  textarea.style.display = "block";
+
+  showNotification(`✅ Generated ${urls.length} URLs`);
+}
+
+function copyAllUrls() {
+  const textarea = document.getElementById("bulkUrls");
+  if (!textarea.value) {
+    showNotification('⚠️ No URLs to copy');
+    return;
+  }
+  navigator.clipboard.writeText(textarea.value).then(() => {
+    showNotification('✅ All URLs copied!');
+  });
+}
+
+function closeBulk() {
+  document.getElementById("bulkArea").style.display = "none";
+  document.getElementById("bulkUrls").style.display = "none";
+}
+
+function quickStudent(name) {
+  document.getElementById("nameInp").value = name;
+  genUrl();
+}
+
+function copyUrl() {
+  const text = document.getElementById("urlTxt").textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    showNotification('✅ URL copied!');
+    const btn = document.querySelector(".copy-btn");
+    btn.textContent = "Copied! ✓";
+    setTimeout(() => btn.textContent = "📋 Copy", 2000);
+  });
+}
+
+function refreshQuestions() {
+  fetch('/api/questions')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('questionCount').textContent = data.length;
+      document.getElementById('questionStatus').textContent = '✅ Loaded';
+      document.getElementById('lastUpdated').textContent = new Date().toLocaleString();
+      showNotification('✅ Questions refreshed!');
+    })
+    .catch(error => {
+      document.getElementById('questionStatus').textContent = '❌ Error';
+      showNotification('❌ Error loading questions');
+    });
+}
+
+function runDailyUpload() {
+  showNotification('⏳ Running daily upload...');
+  fetch('/api/daily_upload', { method: 'POST' })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        showNotification(`✅ ${data.message}`);
+        refreshQuestions();
+      } else {
+        showNotification(`❌ ${data.message}`);
+      }
+    })
+    .catch(error => {
+      showNotification('❌ Error running daily upload');
+    });
+}
+
+function showNotification(msg) {
+  const notif = document.getElementById('notification');
+  document.getElementById('notifMsg').textContent = msg;
+  notif.classList.add('show');
+  clearTimeout(notif.timeout);
+  notif.timeout = setTimeout(() => {
+    notif.classList.remove('show');
+  }, 3000);
+}
+
+document.getElementById("nameInp").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") genUrl();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('publicUrlDisplay').textContent = publicUrl;
+  refreshQuestions();
+});
+</script>
+</body>
+</html>

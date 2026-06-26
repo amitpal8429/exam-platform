@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "question": "Python mein list aur tuple mein kya farak hai?",
+    "type": "text",
+    "marks": 10
+  },
+  {
+    "id": 2,
+    "question": "OOP ke 4 pillars kaunse hain?",
+    "type": "mcq",
+    "options": [
+      "Encapsulation, Inheritance, Polymorphism, Abstraction",
+      "Class, Object, Method, Function",
+      "List, Tuple, Dict, Set",
+      "Input, Output, Process, Storage"
+    ],
+    "correct": 0,
+    "marks": 5
+  },
+  {
+    "id": 3,
+    "question": "Recursion kya hoti hai? Example ke saath explain karo.",
+    "type": "text",
+    "marks": 10
+  },
+  {
+    "id": 4,
+    "question": "Python mein decorator kya hota hai?",
+    "type": "mcq",
+    "options": [
+      "Ek function jo doosre function ko wrap karta hai",
+      "Ek class ka variable",
+      "Ek loop ka type",
+      "Inme se koi nahi"
+    ],
+    "correct": 0,
+    "marks": 5
+  },
+  {
+    "id": 5,
+    "question": "Time complexity kya hoti hai? Big-O notation explain karo.",
+    "type": "text",
+    "marks": 10
+  }
+]

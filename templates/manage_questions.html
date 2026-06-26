@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Questions</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',sans-serif;background:#0d0f18;color:#e2e8f0;padding:24px}
+        .container{max-width:1000px;margin:0 auto}
+        h1{color:#7c6ff7;font-size:24px;margin-bottom:4px}
+        .sub{color:#475569;margin-bottom:24px}
+        .card{background:#13162a;border:1px solid #1e2340;border-radius:12px;padding:20px;margin-bottom:20px}
+        .card h2{color:#a78bfa;font-size:16px;margin-bottom:16px}
+        .q-item{background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:16px;margin-bottom:12px}
+        .q-header{display:flex;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+        .q-header input,.q-header select{background:#0d0f18;border:1px solid #2d3148;border-radius:6px;padding:8px 12px;color:#e2e8f0;flex:1;min-width:150px}
+        .q-header select{flex:0.3}
+        .q-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+        .q-options input{background:#0d0f18;border:1px solid #2d3148;border-radius:6px;padding:8px 12px;color:#e2e8f0}
+        .btn{background:#7c6ff7;border:none;border-radius:8px;color:#fff;padding:10px 20px;font-weight:600;cursor:pointer}
+        .btn:hover{background:#6d5fe6}
+        .btn-danger{background:#ef4444}
+        .btn-danger:hover{background:#dc2626}
+        .btn-success{background:#22c55e}
+        .btn-success:hover{background:#16a34a}
+        .btn-group{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+        .badge{display:inline-block;padding:2px 10px;border-radius:99px;font-size:11px;font-weight:600}
+        .badge.mcq{background:#2d1f6e33;color:#a78bfa;border:1px solid #7c6ff733}
+        .badge.text{background:#14532d33;color:#4ade80;border:1px solid #4ade8033}
+        .preview{background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:16px;margin-top:16px}
+        .preview h3{color:#475569;font-size:13px;margin-bottom:10px}
+        .preview-item{padding:6px 0;border-bottom:1px solid #1e2340;font-size:13px}
+        .preview-item:last-child{border:none}
+        .actions{display:flex;gap:8px;margin-top:12px}
+        .actions button{padding:6px 14px;font-size:12px}
+        .url-box{background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:12px;margin-top:16px;display:flex;gap:10px;align-items:center}
+        .url-box input{flex:1;background:transparent;border:none;color:#a78bfa;font-size:13px;font-family:monospace}
+        .url-box input:focus{outline:none}
+        .status-msg{padding:10px;border-radius:6px;margin-top:10px;display:none}
+        .status-msg.success{display:block;background:#14532d33;color:#4ade80;border:1px solid #4ade8033}
+        .status-msg.error{display:block;background:#7f1d1d33;color:#f87171;border:1px solid #f8717133}
+        textarea{width:100%;background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;padding:12px;color:#e2e8f0;font-family:monospace;font-size:13px}
+        .back-link{color:#7c6ff7;text-decoration:none;display:inline-block;margin-top:20px}
+        .back-link:hover{text-decoration:underline}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📝 Question Management</h1>
+    <div class="sub">Daily questions upload karein — JSON ya manual form se</div>
+
+    <div id="statusMsg" class="status-msg"></div>
+
+    <!-- Quick Upload via JSON -->
+    <div class="card">
+        <h2>📤 Quick Upload (JSON)</h2>
+        <textarea id="jsonInput" rows="6" placeholder='[
+  {"question": "Your question?", "type": "text", "marks": 10},
+  {"question": "MCQ question?", "type": "mcq",
+   "options": ["Option A", "Option B", "Option C", "Option D"],
+   "correct": 0, "marks": 5}
+]'></textarea>
+        <div class="btn-group">
+            <button class="btn" onclick="uploadJSON()">📤 Upload JSON</button>
+            <button class="btn btn-success" onclick="loadExample()">📋 Load Example</button>
+        </div>
+    </div>
+
+    <!-- Manual Question Builder -->
+    <div class="card">
+        <h2>✏️ Manual Question Builder</h2>
+        <div id="questionContainer">
+            <!-- Questions will be rendered here -->
+        </div>
+        <div class="btn-group">
+            <button class="btn" onclick="addQuestion()">➕ Add Question</button>
+            <button class="btn btn-success" onclick="saveQuestions()">💾 Save All Questions</button>
+            <button class="btn btn-danger" onclick="clearAll()">🗑️ Clear All</button>
+        </div>
+    </div>
+
+    <!-- Preview Current Questions -->
+    <div class="card">
+        <h2>👁️ Preview Current Questions</h2>
+        <div id="previewContainer">
+            <!-- Preview will be rendered here -->
+        </div>
+    </div>
+
+    <a href="/admin" class="back-link">← Back to Admin Panel</a>
+</div>
+
+<script>
+// ===== CURRENT QUESTIONS =====
+let questions = {{ questions|tojson }};
+
+function renderQuestions() {
+    const container = document.getElementById('questionContainer');
+    container.innerHTML = '';
+    if (questions.length === 0) {
+        container.innerHTML = '<div style="color:#475569;padding:20px;text-align:center">No questions added. Click "Add Question" to start.</div>';
+        updatePreview();
+        return;
+    }
+
+    questions.forEach((q, index) => {
+        const div = document.createElement('div');
+        div.className = 'q-item';
+        div.innerHTML = `
+            <div class="q-header">
+                <input type="text" value="${q.question || ''}" placeholder="Question ${index+1}"
+                       onchange="updateQuestion(${index}, 'question', this.value)">
+                <select onchange="updateQuestion(${index}, 'type', this.value)">
+                    <option value="text" ${q.type === 'text' ? 'selected' : ''}>📝 Written</option>
+                    <option value="mcq" ${q.type === 'mcq' ? 'selected' : ''}>🔘 MCQ</option>
+                </select>
+                <input type="number" value="${q.marks || 5}" placeholder="Marks" style="flex:0.2;min-width:80px"
+                       onchange="updateQuestion(${index}, 'marks', parseInt(this.value))">
+            </div>
+            ${q.type === 'mcq' ? `
+                <div class="q-options">
+                    ${[0,1,2,3].map(i => `
+                        <input type="text" placeholder="Option ${i+1}" value="${q.options && q.options[i] || ''}"
+                               onchange="updateMCQOption(${index}, ${i}, this.value)">
+                    `).join('')}
+                </div>
+                <div style="margin-top:8px;display:flex;gap:10px;align-items:center">
+                    <span style="color:#475569;font-size:12px">Correct Answer:</span>
+                    <select onchange="updateQuestion(${index}, 'correct', parseInt(this.value))">
+                        ${[0,1,2,3].map(i => `
+                            <option value="${i}" ${q.correct === i ? 'selected' : ''}>Option ${i+1}</option>
+                        `).join('')}
+                    </select>
+                </div>
+            ` : ''}
+            <div class="actions">
+                <button class="btn btn-danger" onclick="removeQuestion(${index})" style="padding:4px 12px;font-size:11px">🗑️ Remove</button>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+    updatePreview();
+    updateQuestionIds();
+}
+
+function updateQuestion(index, field, value) {
+    if (field === 'type') {
+        if (value === 'text') {
+            delete questions[index].options;
+            delete questions[index].correct;
+        } else {
+            if (!questions[index].options) {
+                questions[index].options = ['', '', '', ''];
+            }
+            if (questions[index].correct === undefined) {
+                questions[index].correct = 0;
+            }
+        }
+    }
+    questions[index][field] = value;
+    renderQuestions();
+}
+
+function updateMCQOption(index, optIndex, value) {
+    if (!questions[index].options) {
+        questions[index].options = ['', '', '', ''];
+    }
+    questions[index].options[optIndex] = value;
+    renderQuestions();
+}
+
+function removeQuestion(index) {
+    if (confirm('Remove this question?')) {
+        questions.splice(index, 1);
+        renderQuestions();
+    }
+}
+
+function addQuestion() {
+    questions.push({
+        id: questions.length + 1,
+        question: 'New Question',
+        type: 'text',
+        marks: 5
+    });
+    renderQuestions();
+}
+
+function clearAll() {
+    if (confirm('Delete all questions?')) {
+        questions = [];
+        renderQuestions();
+    }
+}
+
+function updateQuestionIds() {
+    questions.forEach((q, i) => q.id = i + 1);
+}
+
+function updatePreview() {
+    const container = document.getElementById('previewContainer');
+    if (questions.length === 0) {
+        container.innerHTML = '<div style="color:#475569;padding:10px 0">No questions added yet</div>';
+        return;
+    }
+    container.innerHTML = questions.map((q, i) => `
+        <div class="preview-item">
+            <span style="color:#7c6ff7">Q${i+1}.</span>
+            <span style="color:#e2e8f0">${q.question || 'Untitled'}</span>
+            <span class="badge ${q.type}">${q.type.toUpperCase()}</span>
+            <span style="color:#475569;font-size:11px;float:right">${q.marks} marks</span>
+            ${q.type === 'mcq' ? `<div style="color:#475569;font-size:11px;margin-top:2px">Options: ${(q.options||['','','','']).join(' | ')}</div>` : ''}
+        </div>
+    `).join('');
+}
+
+async function saveQuestions() {
+    try {
+        showStatus('Saving questions...', '');
+
+        const cleanQuestions = questions.map(q => ({
+            id: q.id,
+            question: q.question,
+            type: q.type,
+            marks: q.marks,
+            ...(q.type === 'mcq' && {
+                options: q.options || ['', '', '', ''],
+                correct: q.correct || 0
+            })
+        }));
+
+        const formData = new FormData();
+        formData.append('question_count', cleanQuestions.length);
+        cleanQuestions.forEach((q, i) => {
+            formData.append(`q_${i}_question`, q.question);
+            formData.append(`q_${i}_type`, q.type);
+            formData.append(`q_${i}_marks`, q.marks);
+            if (q.type === 'mcq') {
+                q.options.forEach((opt, j) => {
+                    formData.append(`q_${i}_opt_${j}`, opt);
+                });
+                formData.append(`q_${i}_correct`, q.correct);
+            }
+        });
+
+        const response = await fetch('/admin/questions', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+        if (result.status === 'success') {
+            showStatus('✅ Questions saved successfully!', 'success');
+            setTimeout(() => location.reload(), 1500);
+        } else {
+            showStatus('❌ Error: ' + result.message, 'error');
+        }
+    } catch (error) {
+        showStatus('❌ Error saving questions: ' + error.message, 'error');
+    }
+}
+
+function uploadJSON() {
+    try {
+        const input = document.getElementById('jsonInput').value;
+        const newQuestions = JSON.parse(input);
+        if (!Array.isArray(newQuestions)) {
+            throw new Error('JSON must be an array');
+        }
+        questions = newQuestions.map((q, i) => ({
+            ...q,
+            id: i + 1
+        }));
+        renderQuestions();
+        showStatus('✅ JSON loaded successfully! ' + questions.length + ' questions loaded.', 'success');
+    } catch (error) {
+        showStatus('❌ JSON Error: ' + error.message, 'error');
+    }
+}
+
+function loadExample() {
+    document.getElementById('jsonInput').value = JSON.stringify([
+        {"question": "Python mein list aur tuple mein kya farak hai?", "type": "text", "marks": 10},
+        {"question": "OOP ke 4 pillars kaunse hain?", "type": "mcq",
+         "options": ["Encapsulation, Inheritance, Polymorphism, Abstraction",
+                    "Class, Object, Method, Function",
+                    "List, Tuple, Dict, Set",
+                    "Input, Output, Process, Storage"],
+         "correct": 0, "marks": 5}
+    ], null, 2);
+    showStatus('✅ Example loaded! Click "Upload JSON" to use it.', 'success');
+}
+
+function showStatus(message, type) {
+    const el = document.getElementById('statusMsg');
+    el.textContent = message;
+    el.className = 'status-msg ' + type;
+    if (type) {
+        el.style.display = 'block';
+        setTimeout(() => {
+            el.style.display = 'none';
+        }, 5000);
+    }
+}
+
+renderQuestions();
+</script>
+</body>
+</html>
