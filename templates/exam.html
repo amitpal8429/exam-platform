@@ -233,7 +233,7 @@ async function startEverything() {
 async function startCamera() {
   try {
     camStream = await navigator.mediaDevices.getUserMedia({
-      video: { width: 1280, height: 720, facingMode: "user" },
+      video: { width: 640, height: 480, facingMode: "user" },
       audio: false
     });
     document.getElementById("camVideo").srcObject = camStream;

@@ -1,652 +1,652 @@
 [
   {
     "id": 1,
-    "question": "The ASA Physical Status Classification is primarily used for:",
+    "question": "A 3-month-old infant presents with generalized xerosis, severe pruritus, recurrent Staphylococcus aureus skin infections, and markedly elevated total IgE. Whole-exome sequencing demonstrates a heterozygous loss-of-function mutation in FLG. Which immunologic mechanism most directly links the genetic defect to food allergy development?",
     "type": "mcq",
     "options": [
-      "Airway assessment",
-      "Risk stratification before anesthesia",
-      "Pain scoring",
-      "ICU discharge planning"
+      "Enhanced IL-17 production by γδ T cells causing neutrophilic inflammation",
+      "Epicutaneous allergen penetration inducing thymic stromal lymphopoietin (TSLP)-mediated Th2 sensitization",
+      "Increased IFN-γ signaling causing keratinocyte apoptosis",
+      "Deficiency of complement C3 leading to impaired opsonization"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 2,
-    "question": "Which drug is most commonly used for induction of general anesthesia?",
+    "question": "Which of the following histopathological findings best distinguishes acute atopic dermatitis from chronic atopic dermatitis?",
     "type": "mcq",
     "options": [
-      "Atropine",
-      "Propofol",
-      "Digoxin",
-      "Furosemide"
+      "Regular psoriasiform epidermal hyperplasia",
+      "Prominent spongiosis with intraepidermal vesiculation",
+      "Hypergranulosis with wedge-shaped hyperkeratosis",
+      "Full-thickness epidermal dysplasia"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 3,
-    "question": "The gold standard for securing the airway is:",
+    "question": "A neonate develops superficial flaccid bullae on the trunk and perineum. Nikolsky sign is positive. Mucous membranes are spared. Histopathology demonstrates a subcorneal split. Which toxin is responsible?",
     "type": "mcq",
     "options": [
-      "Face mask ventilation",
-      "Nasal cannula",
-      "Endotracheal intubation",
-      "Oropharyngeal airway"
-    ],
-    "correct": 2,
-    "marks": 1
-  },
-  {
-    "id": 4,
-    "question": "Which inhalational anesthetic has the lowest blood-gas solubility and fastest induction?",
-    "type": "mcq",
-    "options": [
-      "Halothane",
-      "Isoflurane",
-      "Sevoflurane",
-      "Desflurane"
-    ],
-    "correct": 3,
-    "marks": 1
-  },
-  {
-    "id": 5,
-    "question": "Pulse oximetry measures:",
-    "type": "mcq",
-    "options": [
-      "Blood pressure",
-      "Oxygen saturation (SpO₂)",
-      "Cardiac output",
-      "Intracranial pressure"
+      "TSST-1",
+      "Exfoliative toxin A targeting desmoglein-1",
+      "Alpha toxin",
+      "Panton-Valentine leukocidin"
     ],
     "correct": 1,
     "marks": 1
   },
   {
-    "id": 6,
-    "question": "Spinal anesthesia is commonly administered into the:",
+    "id": 4,
+    "question": "An 8-year-old child develops widespread guttate papules two weeks after streptococcal pharyngitis. Which immunologic pathway has the strongest evidence for disease pathogenesis?",
     "type": "mcq",
     "options": [
-      "Epidural space",
-      "Subarachnoid space",
-      "Pleural cavity",
-      "Peritoneal cavity"
+      "IL-5 eosinophilic pathway",
+      "IL-17/IL-23 axis",
+      "IL-10 regulatory pathway",
+      "Type I interferon pathway"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 5,
+    "question": "Which dermoscopic finding is considered most characteristic of tinea capitis caused by Trichophyton tonsurans?",
+    "type": "mcq",
+    "options": [
+      "Blue-white veil",
+      "Arborizing vessels",
+      "Corkscrew hairs and comma hairs",
+      "Milky-red globules"
+    ],
+    "correct": 2,
+    "marks": 1
+  },
+  {
+    "id": 6,
+    "question": "A 7-year-old immunocompromised child develops painful hemorrhagic vesicles with fever. PCR confirms disseminated varicella-zoster virus infection. Which antiviral has the strongest evidence as first-line therapy?",
+    "type": "mcq",
+    "options": [
+      "Oral famciclovir",
+      "Intravenous acyclovir",
+      "Oral valacyclovir only",
+      "Topical cidofovir"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 7,
-    "question": "Fiberoptic intubation is particularly useful in:",
+    "question": "A child presents with multiple café-au-lait macules, axillary freckling, Lisch nodules and a plexiform neurofibroma. Which mutation is responsible?",
     "type": "mcq",
     "options": [
-      "Routine airway management",
-      "Difficult airway cases",
-      "Regional anesthesia",
-      "Pediatric sedation only"
+      "PTCH1",
+      "NF1",
+      "TSC2",
+      "GNAS"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 8,
-    "question": "Which monitor is used to estimate depth of anesthesia?",
+    "question": "A newborn has generalized blistering immediately after birth. Immunofluorescence mapping localizes the cleavage plane within the lamina lucida. Which diagnosis is most likely?",
     "type": "mcq",
     "options": [
-      "ECG",
-      "BIS monitor",
-      "Pulse oximeter",
-      "Spirometer"
+      "Epidermolysis bullosa simplex",
+      "Junctional epidermolysis bullosa",
+      "Dystrophic epidermolysis bullosa",
+      "Bullous congenital ichthyosiform erythroderma"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 9,
-    "question": "Transesophageal echocardiography (TEE) is most commonly used during:",
+    "question": "Which pediatric biologic selectively blocks IL-4 receptor α, thereby inhibiting both IL-4 and IL-13 signaling?",
     "type": "mcq",
     "options": [
-      "Ophthalmic surgery",
-      "Cardiac surgery",
-      "Dental surgery",
-      "Dermatologic procedures"
+      "Secukinumab",
+      "Dupilumab",
+      "Adalimumab",
+      "Ustekinumab"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 10,
-    "question": "The immediate postoperative period is primarily managed in the:",
+    "question": "A 4-year-old develops extensive impetigo unresponsive to oral cephalexin. Culture demonstrates community-associated MRSA. Which oral antibiotic is generally the most appropriate empiric alternative (assuming local susceptibility)?",
     "type": "mcq",
     "options": [
-      "Ward",
-      "Recovery room (PACU)",
-      "Laboratory",
-      "Radiology suite"
+      "Penicillin V",
+      "Dicloxacillin",
+      "Clindamycin",
+      "Cefixime"
     ],
-    "correct": 1,
+    "correct": 2,
     "marks": 1
   },
   {
     "id": 11,
-    "question": "The most common cause of postoperative hypoxemia is:",
+    "question": "Which congenital vascular anomaly carries the greatest risk of association with PHACE syndrome?",
     "type": "mcq",
     "options": [
-      "Hypertension",
-      "Atelectasis",
-      "Hyperglycemia",
-      "Anemia"
+      "Small focal scalp hemangioma",
+      "Large segmental facial infantile hemangioma",
+      "Venous lake",
+      "Pyogenic granuloma"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 12,
-    "question": "Neuropathic pain is commonly treated with:",
+    "question": "A child with juvenile dermatomyositis develops painful ulcerative skin lesions despite corticosteroids. Persistent elevation of which autoantibody is most strongly associated with severe cutaneous vasculopathy?",
     "type": "mcq",
     "options": [
-      "Antibiotics",
-      "Gabapentin",
-      "Antacids",
-      "Diuretics"
+      "Anti-MDA5",
+      "Anti-dsDNA",
+      "Anti-Sm",
+      "Anti-centromere"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 13,
+    "question": "Which biopsy technique provides the greatest diagnostic yield for suspected leukocytoclastic vasculitis?",
+    "type": "mcq",
+    "options": [
+      "Shave biopsy of an ulcer",
+      "Punch biopsy of a fresh lesion (<24 hours)",
+      "Curettage",
+      "Excisional biopsy of a healed lesion"
     ],
     "correct": 1,
     "marks": 1
   },
   {
-    "id": 13,
-    "question": "The normal end-tidal CO₂ (EtCO₂) range is approximately:",
-    "type": "mcq",
-    "options": [
-      "10–20 mmHg",
-      "20–30 mmHg",
-      "35–45 mmHg",
-      "50–60 mmHg"
-    ],
-    "correct": 2,
-    "marks": 1
-  },
-  {
     "id": 14,
-    "question": "The narrowest part of the pediatric airway is traditionally considered the:",
+    "question": "A child receiving oral propranolol for infantile hemangioma develops lethargy and seizures after prolonged fasting. The most likely mechanism is:",
     "type": "mcq",
     "options": [
-      "Vocal cords",
-      "Cricoid cartilage",
-      "Trachea",
-      "Nasopharynx"
+      "Hyperinsulinemia",
+      "Masking of hypoglycemia with impaired glycogenolysis",
+      "Hyponatremia",
+      "Hyperkalemia"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 15,
-    "question": "Neonates have a higher oxygen consumption than adults because of:",
+    "question": "Which of the following represents the strongest indication for immediate admission to a pediatric intensive care or burn unit?",
     "type": "mcq",
     "options": [
-      "Increased metabolic rate",
-      "Larger lungs",
-      "Lower cardiac output",
-      "Increased hemoglobin"
+      "Localized bullous impetigo",
+      "Stevens–Johnson syndrome involving 15% body surface area with mucosal involvement",
+      "Molluscum contagiosum",
+      "Stable localized epidermolysis bullosa simplex"
+    ],
+    "correct": 1,
+    "marks": 1
+  },
+  {
+    "id": 16,
+    "question": "A randomized controlled trial comparing two topical agents for pediatric eczema reports: Relative Risk = 0.72, 95% Confidence Interval = 0.55–0.94, p = 0.018. Which interpretation is MOST accurate?",
+    "type": "mcq",
+    "options": [
+      "The treatment significantly reduces risk because the confidence interval excludes 1.",
+      "The study is statistically insignificant because RR is below 1.",
+      "The p-value proves clinical superiority.",
+      "Confidence intervals cannot determine significance."
     ],
     "correct": 0,
     "marks": 1
   },
   {
-    "id": 16,
-    "question": "Which inhalational agent is commonly preferred for pediatric mask induction?",
+    "id": 17,
+    "question": "A 13-year-old girl with vitiligo refuses to attend school because classmates bully her regarding her appearance. Which intervention is supported by current pediatric dermatology principles as part of comprehensive management?",
     "type": "mcq",
     "options": [
-      "Desflurane",
-      "Nitrous oxide only",
-      "Sevoflurane",
-      "Halothane only"
+      "Delay psychosocial intervention until repigmentation occurs.",
+      "Recommend school withdrawal.",
+      "Integrate dermatologic treatment with psychological assessment, family counseling, and school-based support.",
+      "Begin systemic corticosteroids solely to improve self-esteem."
     ],
     "correct": 2,
     "marks": 1
   },
   {
-    "id": 17,
-    "question": "The most commonly used method of labor analgesia is:",
-    "type": "mcq",
-    "options": [
-      "General anesthesia",
-      "Epidural analgesia",
-      "Local infiltration",
-      "Sedation alone"
-    ],
-    "correct": 1,
-    "marks": 1
-  },
-  {
     "id": 18,
-    "question": "Spinal anesthesia is frequently used for:",
+    "question": "A 2-year-old girl presents with persistent periorificial dermatitis, alopecia, chronic diarrhea, and irritability. Serum zinc is markedly reduced. Which transporter defect is responsible for the inherited form of this disorder?",
     "type": "mcq",
     "options": [
-      "Thyroidectomy",
-      "Cesarean section",
-      "Cataract surgery",
-      "Bronchoscopy"
+      "ATP7A",
+      "ATP7B",
+      "SLC39A4",
+      "ABCA12"
     ],
-    "correct": 1,
+    "correct": 2,
     "marks": 1
   },
   {
     "id": 19,
-    "question": "Magnesium sulfate is used in obstetrics to manage:",
+    "question": "A 6-year-old boy with recurrent blistering over trauma-prone areas develops progressive mitten deformities of both hands. Genetic analysis most likely demonstrates mutation in:",
     "type": "mcq",
     "options": [
-      "Gestational diabetes",
-      "Eclampsia",
-      "Placenta previa",
-      "Anemia"
+      "KRT14",
+      "COL7A1",
+      "LAMA3",
+      "FLG"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 20,
-    "question": "During craniotomy, anesthetic management aims to:",
+    "question": "A newborn develops diffuse erythroderma with collodion membrane at birth. Electron microscopy reveals absent lamellar granules. Which diagnosis is most likely?",
     "type": "mcq",
     "options": [
-      "Increase intracranial pressure",
-      "Maintain cerebral perfusion",
-      "Cause hypertension",
-      "Eliminate ventilation"
+      "Harlequin ichthyosis",
+      "Lamellar ichthyosis",
+      "Epidermolysis bullosa simplex",
+      "Incontinentia pigmenti"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 21,
-    "question": "Bariatric surgery patients are at increased risk of:",
+    "question": "A child with severe atopic dermatitis has persistent eosinophilia despite biologic therapy. Which cytokine is primarily responsible for eosinophil maturation in bone marrow?",
     "type": "mcq",
     "options": [
-      "Difficult airway",
-      "Hypothermia only",
-      "Bradycardia only",
-      "Hypercalcemia"
+      "IL-5",
+      "IL-12",
+      "IL-18",
+      "IL-27"
     ],
     "correct": 0,
     "marks": 1
   },
   {
     "id": 22,
-    "question": "One-lung ventilation is commonly required during:",
+    "question": "A neonate presents with diffuse pustules that rupture easily, leaving hyperpigmented macules with collarettes of scale. Wright stain demonstrates abundant neutrophils without eosinophils. The diagnosis is:",
     "type": "mcq",
     "options": [
-      "Thoracic surgery",
-      "Cataract surgery",
-      "Hernia repair",
-      "Colonoscopy"
+      "Erythema toxicum neonatorum",
+      "Transient neonatal pustular melanosis",
+      "Neonatal candidiasis",
+      "Bullous impetigo"
     ],
-    "correct": 0,
+    "correct": 1,
     "marks": 1
   },
   {
     "id": 23,
-    "question": "CABG stands for:",
+    "question": "A child receiving methotrexate for severe psoriasis develops painful oral ulcerations and pancytopenia. Which intervention should be administered immediately?",
     "type": "mcq",
     "options": [
-      "Coronary Artery Bypass Grafting",
-      "Cardiac Arterial Blood Gas",
-      "Coronary Aortic Balloon Guide",
-      "Cardiac Anesthesia Basic Guideline"
+      "Vitamin K",
+      "Leucovorin rescue",
+      "Pyridoxine",
+      "Intravenous immunoglobulin"
     ],
-    "correct": 0,
+    "correct": 1,
     "marks": 1
   },
   {
     "id": 24,
-    "question": "The most common intraoperative arrhythmia is:",
+    "question": "Which dermoscopic feature is most characteristic of psoriasis?",
     "type": "mcq",
     "options": [
-      "Atrial fibrillation",
-      "Sinus tachycardia",
-      "Ventricular fibrillation",
-      "Complete heart block"
+      "Arborizing vessels",
+      "Uniform dotted vessels over a light-red background with diffuse white scales",
+      "Blue-gray globules",
+      "Peripheral streaks"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 25,
-    "question": "TEE provides real-time assessment of:",
+    "question": "A 9-year-old immunocompromised child develops rapidly progressive black eschar involving the nasal ala. Which fungal pathogen should be suspected first?",
     "type": "mcq",
     "options": [
-      "Liver function",
-      "Cardiac structure and function",
-      "Renal blood flow only",
-      "Pulmonary function"
+      "Candida albicans",
+      "Aspergillus fumigatus",
+      "Rhizopus species",
+      "Trichophyton rubrum"
     ],
-    "correct": 1,
+    "correct": 2,
     "marks": 1
   },
   {
     "id": 26,
-    "question": "ERAS stands for:",
+    "question": "A child with recurrent skin abscesses has absent neutrophil oxidative burst on flow cytometry (DHR test). Which dermatologic diagnosis is most commonly associated?",
     "type": "mcq",
     "options": [
-      "Enhanced Recovery After Surgery",
-      "Emergency Response Anesthesia Service",
-      "Early Recovery Analgesic Strategy",
-      "Enhanced Regional Anesthesia System"
+      "Chronic granulomatous disease",
+      "Hyper-IgM syndrome",
+      "Wiskott-Aldrich syndrome",
+      "Leukocyte adhesion deficiency"
     ],
     "correct": 0,
     "marks": 1
   },
   {
     "id": 27,
-    "question": "Multimodal analgesia aims to:",
+    "question": "Which congenital melanocytic nevus carries the greatest lifetime risk for melanoma?",
     "type": "mcq",
     "options": [
-      "Use one drug only",
-      "Reduce opioid requirements",
-      "Increase sedation",
-      "Delay recovery"
+      "Small (<1.5 cm)",
+      "Medium (1.5–20 cm)",
+      "Giant (>40 cm projected adult size)",
+      "Junctional nevus"
     ],
-    "correct": 1,
+    "correct": 2,
     "marks": 1
   },
   {
     "id": 28,
-    "question": "Hemorrhagic shock is primarily treated with:",
+    "question": "A child with suspected juvenile dermatomyositis undergoes MRI. Which finding best reflects active muscle inflammation?",
     "type": "mcq",
     "options": [
-      "Diuretics",
-      "Fluid and blood resuscitation",
-      "Sedatives",
-      "Antibiotics"
+      "Fatty replacement only",
+      "T1 hypointensity without edema",
+      "T2/STIR hyperintense muscle edema",
+      "Muscle calcification only"
     ],
-    "correct": 1,
+    "correct": 2,
     "marks": 1
   },
   {
     "id": 29,
-    "question": "In trauma patients, cervical spine injury must be assumed until:",
+    "question": "Which topical corticosteroid has the highest potency?",
     "type": "mcq",
     "options": [
-      "Surgery",
-      "Excluded clinically and radiologically",
-      "ICU admission",
-      "Discharge"
+      "Hydrocortisone 1%",
+      "Desonide 0.05%",
+      "Clobetasol propionate 0.05%",
+      "Fluocinolone acetonide 0.01%"
     ],
-    "correct": 1,
+    "correct": 2,
     "marks": 1
   },
   {
     "id": 30,
-    "question": "The Parkland formula is used in:",
+    "question": "A 15-year-old girl develops painful dusky macules, oral erosions, conjunctivitis, and epidermal detachment involving 18% body surface area after beginning lamotrigine. The diagnosis is:",
     "type": "mcq",
     "options": [
-      "Stroke",
-      "Burn resuscitation",
-      "Asthma",
-      "Renal failure"
+      "Bullous pemphigoid",
+      "Staphylococcal scalded skin syndrome",
+      "Stevens–Johnson syndrome/TEN overlap",
+      "Pemphigus vulgaris"
     ],
-    "correct": 1,
+    "correct": 2,
     "marks": 1
   },
   {
     "id": 31,
-    "question": "An intrathecal pump delivers medication directly into the:",
+    "question": "Which histopathologic feature is characteristic of lichen planus?",
     "type": "mcq",
     "options": [
-      "Epidural space",
-      "Subarachnoid space",
-      "Pleural cavity",
-      "Peritoneum"
+      "Suprabasal clefting",
+      "Saw-tooth acanthosis with band-like lymphocytic infiltrate",
+      "Subcorneal pustules",
+      "Basket-weave orthokeratosis"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 32,
-    "question": "Which nerve block is commonly used for postoperative knee surgery pain?",
+    "question": "Which laser demonstrates the greatest efficacy for pediatric port-wine stains?",
     "type": "mcq",
     "options": [
-      "Femoral nerve block",
-      "Facial nerve block",
-      "Intercostal block",
-      "Pudendal block"
+      "CO₂ laser",
+      "Pulsed dye laser (595 nm)",
+      "Nd:YAG laser alone",
+      "Alexandrite laser"
     ],
-    "correct": 0,
+    "correct": 1,
     "marks": 1
   },
   {
     "id": 33,
-    "question": "Spinal cord stimulation is used primarily for:",
+    "question": "A randomized trial reports: Relative Risk = 0.62, Absolute Risk Reduction = 10%. What is the correct Number Needed to Treat (NNT)?",
     "type": "mcq",
     "options": [
-      "Acute appendicitis",
-      "Chronic refractory pain",
-      "Hypertension",
-      "Pneumonia"
-    ],
-    "correct": 1,
-    "marks": 1
-  },
-  {
-    "id": 34,
-    "question": "CRM in anesthesia stands for:",
-    "type": "mcq",
-    "options": [
-      "Clinical Resource Monitoring",
-      "Crisis Resource Management",
-      "Cardiac Recovery Management",
-      "Clinical Risk Mitigation"
-    ],
-    "correct": 1,
-    "marks": 1
-  },
-  {
-    "id": 35,
-    "question": "High-fidelity simulation is mainly used to:",
-    "type": "mcq",
-    "options": [
-      "Replace clinical practice entirely",
-      "Improve crisis management skills",
-      "Reduce monitoring",
-      "Eliminate teamwork"
-    ],
-    "correct": 1,
-    "marks": 1
-  },
-  {
-    "id": 36,
-    "question": "Patients with Obstructive Sleep Apnea are at increased risk of:",
-    "type": "mcq",
-    "options": [
-      "Difficult airway and postoperative respiratory complications",
-      "Hyperthyroidism",
-      "Liver failure",
-      "Leukemia"
-    ],
-    "correct": 0,
-    "marks": 1
-  },
-  {
-    "id": 37,
-    "question": "In chronic kidney disease, which drug may have prolonged effects?",
-    "type": "mcq",
-    "options": [
-      "Atracurium",
-      "Cisatracurium",
-      "Pancuronium",
-      "Oxygen"
+      "5",
+      "8",
+      "10",
+      "20"
     ],
     "correct": 2,
     "marks": 1
   },
   {
-    "id": 38,
-    "question": "Diabetic patients undergoing surgery require close monitoring of:",
+    "id": 34,
+    "question": "A 14-year-old girl with severe psoriasis reports social withdrawal, declining academic performance, and suicidal ideation. According to current pediatric dermatology practice, the most appropriate next step is:",
     "type": "mcq",
     "options": [
-      "Hemoglobin only",
-      "Blood glucose",
-      "Calcium only",
-      "Potassium only"
+      "Focus exclusively on systemic psoriasis treatment.",
+      "Delay psychological assessment until skin lesions improve.",
+      "Initiate multidisciplinary management including urgent mental health evaluation while optimizing dermatologic therapy.",
+      "Reassure the family that psychiatric symptoms usually resolve spontaneously."
+    ],
+    "correct": 2,
+    "marks": 1
+  },
+  {
+    "id": 35,
+    "question": "A full-term neonate is born encased in a taut, shiny membrane that fissures over the first 48 hours. There is marked ectropion and eclabium, but no blistering. Genetic testing is most likely to identify a mutation in:",
+    "type": "mcq",
+    "options": [
+      "ABCA12",
+      "COL7A1",
+      "KRT14",
+      "SPINK5"
+    ],
+    "correct": 0,
+    "marks": 1
+  },
+  {
+    "id": 36,
+    "question": "A 6-year-old boy presents with generalized erythroderma, bamboo hair (trichorrhexis invaginata), recurrent bacterial infections, and severe atopy. Which syndrome is the most likely diagnosis?",
+    "type": "mcq",
+    "options": [
+      "Omenn syndrome",
+      "Hyper-IgE syndrome",
+      "Netherton syndrome",
+      "Wiskott-Aldrich syndrome"
+    ],
+    "correct": 2,
+    "marks": 1
+  },
+  {
+    "id": 37,
+    "question": "A child with recurrent herpes simplex virus infection undergoes evaluation. Which primary immunodeficiency most commonly predisposes to severe cutaneous HSV infections?",
+    "type": "mcq",
+    "options": [
+      "Chronic granulomatous disease",
+      "Severe combined immunodeficiency (SCID)",
+      "Hereditary angioedema",
+      "Selective IgA deficiency"
     ],
     "correct": 1,
     "marks": 1
   },
   {
-    "id": 39,
-    "question": "Informed consent must be:",
+    "id": 38,
+    "question": "Which of the following is the strongest indication for performing a direct immunofluorescence (DIF) biopsy in a child?",
     "type": "mcq",
     "options": [
-      "Voluntary and informed",
-      "Obtained after surgery",
-      "Given by staff only",
-      "Optional"
+      "Molluscum contagiosum",
+      "Bullous impetigo",
+      "Autoimmune blistering disease",
+      "Verruca vulgaris"
     ],
-    "correct": 0,
+    "correct": 2,
+    "marks": 1
+  },
+  {
+    "id": 39,
+    "question": "A 5-year-old presents with extensive crusted scabies. Microscopy demonstrates numerous mites. Which factor most strongly predisposes children to crusted scabies?",
+    "type": "mcq",
+    "options": [
+      "Atopic dermatitis alone",
+      "Immunosuppression or impaired cell-mediated immunity",
+      "Iron deficiency anemia",
+      "Vitamin D deficiency"
+    ],
+    "correct": 1,
     "marks": 1
   },
   {
     "id": 40,
-    "question": "Accurate anesthesia documentation is important for:",
+    "question": "Which immunologic pathway is predominantly responsible for the pathogenesis of alopecia areata in children?",
     "type": "mcq",
     "options": [
-      "Patient safety",
-      "Legal protection",
-      "Quality assurance",
-      "All of the above"
+      "Th2-mediated eosinophilic inflammation",
+      "Cytotoxic CD8+ T-cell attack on the hair follicle with IFN-γ signaling",
+      "Immune-complex deposition",
+      "Mast-cell degranulation"
     ],
-    "correct": 3,
+    "correct": 1,
     "marks": 1
   },
   {
     "id": 41,
-    "question": "Cerebral Perfusion Pressure (CPP) equals:",
+    "question": "A child receiving long-term topical corticosteroids develops linear striae and telangiectasia. The primary pathogenic mechanism is:",
     "type": "mcq",
     "options": [
-      "MAP − ICP",
-      "ICP − MAP",
-      "MAP + ICP",
-      "HR × BP"
+      "Increased fibroblast proliferation",
+      "Collagen degradation and dermal atrophy",
+      "Increased melanocyte activity",
+      "Excess elastin production"
     ],
-    "correct": 0,
+    "correct": 1,
     "marks": 1
   },
   {
     "id": 42,
-    "question": "Increased intracranial pressure may cause:",
+    "question": "A 12-year-old girl with localized scleroderma (morphea) develops progressive joint contractures despite topical therapy. The most appropriate next treatment is:",
     "type": "mcq",
     "options": [
-      "Bradycardia",
-      "Hypertension",
-      "Altered consciousness",
-      "All of the above"
+      "Oral acyclovir",
+      "Methotrexate with systemic corticosteroids",
+      "Oral isotretinoin",
+      "Topical mupirocin"
     ],
-    "correct": 3,
+    "correct": 1,
     "marks": 1
   },
   {
     "id": 43,
-    "question": "Brain death testing is important in:",
+    "question": "A child presents with extensive port-wine stain involving the ophthalmic (V1) distribution of the trigeminal nerve. Which associated syndrome should be suspected?",
     "type": "mcq",
     "options": [
-      "Organ donation",
-      "Dental surgery",
-      "Cataract surgery",
-      "Colonoscopy"
+      "PHACE syndrome",
+      "Sturge-Weber syndrome",
+      "Proteus syndrome",
+      "Klippel-Trénaunay syndrome"
     ],
-    "correct": 0,
+    "correct": 1,
     "marks": 1
   },
   {
     "id": 44,
-    "question": "A major challenge in low-resource anesthesia settings is:",
+    "question": "Which histologic finding is most characteristic of Langerhans cell histiocytosis?",
     "type": "mcq",
     "options": [
-      "Excess equipment",
-      "Limited access to anesthesia services",
-      "Excess workforce",
-      "Excess ICU beds"
+      "Touton giant cells",
+      "Birbeck granules on electron microscopy",
+      "Russell bodies",
+      "Civatte bodies"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 45,
-    "question": "Field anesthesia often requires:",
+    "question": "A child develops diffuse desquamation, fever, hypotension, and multiorgan dysfunction caused by toxin-producing Staphylococcus aureus. Which superantigen is classically implicated?",
     "type": "mcq",
     "options": [
-      "Resource adaptability",
-      "Unlimited monitoring",
-      "Full hospital infrastructure",
-      "Cardiac catheterization labs"
+      "Exfoliative toxin B",
+      "Toxic Shock Syndrome Toxin-1 (TSST-1)",
+      "Alpha toxin",
+      "Enterotoxin G"
     ],
-    "correct": 0,
+    "correct": 1,
     "marks": 1
   },
   {
     "id": 46,
-    "question": "CME stands for:",
+    "question": "Which topical calcineurin inhibitor is approved for moderate-to-severe pediatric atopic dermatitis and does not cause skin atrophy?",
     "type": "mcq",
     "options": [
-      "Clinical Monitoring Evaluation",
-      "Continuing Medical Education",
-      "Critical Management Exercise",
-      "Clinical Medical Examination"
+      "Hydrocortisone",
+      "Tacrolimus ointment",
+      "Betamethasone valerate",
+      "Clobetasol propionate"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 47,
-    "question": "Professional societies in anesthesia support:",
+    "question": "A multicenter pediatric trial evaluating a new biologic for severe atopic dermatitis randomizes participants to biologic or placebo. This design is best classified as:",
     "type": "mcq",
     "options": [
-      "Education and networking",
-      "Litigation only",
-      "Hospital billing",
-      "Drug manufacturing"
+      "Cross-sectional study",
+      "Case-control study",
+      "Randomized controlled trial",
+      "Ecological study"
     ],
-    "correct": 0,
+    "correct": 2,
     "marks": 1
   },
   {
     "id": 48,
-    "question": "A meta-analysis combines results from:",
+    "question": "A 15-year-old with severe acne develops sudden fever, painful ulcerative nodules, polyarthralgia, leukocytosis, and elevated inflammatory markers shortly after initiating isotretinoin. Which diagnosis is most likely?",
     "type": "mcq",
     "options": [
-      "One case report",
-      "Multiple studies",
-      "One hospital",
-      "One patient"
+      "Acne conglobata",
+      "Acne fulminans",
+      "Rosacea fulminans",
+      "Gram-negative folliculitis"
     ],
     "correct": 1,
     "marks": 1
   },
   {
     "id": 49,
-    "question": "Artificial intelligence in anesthesia may assist with:",
+    "question": "A dermatologist is providing teledermatology services to families in remote communities. Which practice is most appropriate for maintaining high-quality pediatric care?",
     "type": "mcq",
     "options": [
-      "Predictive monitoring",
-      "Decision support",
-      "Risk assessment",
-      "All of the above"
+      "Diagnose all pigmented lesions exclusively from photographs.",
+      "Use secure platforms, obtain informed consent, document image quality, and arrange in-person evaluation when diagnostic uncertainty or procedural management exists.",
+      "Avoid communication with primary care physicians.",
+      "Prescribe systemic immunosuppressants without laboratory monitoring."
     ],
-    "correct": 3,
+    "correct": 1,
     "marks": 1
   },
   {
     "id": 50,
-    "question": "Research ethics primarily protects:",
+    "question": "A 14-year-old with severe psoriasis reports bullying, anxiety, treatment non-adherence, and declining quality of life. Which management strategy is most consistent with contemporary pediatric dermatology practice?",
     "type": "mcq",
     "options": [
-      "Investigators only",
-      "Study participants",
-      "Journals only",
-      "Sponsors only"
+      "Focus solely on clearing the skin because psychosocial symptoms usually resolve automatically.",
+      "Refer only to psychiatry and discontinue dermatologic treatment.",
+      "Integrate evidence-based dermatologic therapy with psychological screening, family counseling, school support, and shared decision-making.",
+      "Delay treatment until adulthood because biologics are contraindicated in adolescents."
     ],
-    "correct": 1,
+    "correct": 2,
     "marks": 1
   }
 ]
