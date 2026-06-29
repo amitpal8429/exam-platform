@@ -24,11 +24,17 @@ body{font-family:'Segoe UI',sans-serif;background:#0d0f18;color:#e2e8f0;height:1
 .prog-fill{height:100%;background:linear-gradient(90deg,#7c6ff7,#a78bfa);border-radius:99px;transition:width 0.4s}
 .q-card{background:#13162a;border:1px solid #1e2340;border-radius:12px;padding:16px;margin-bottom:12px;transition:border-color 0.2s}
 .q-card.answered{border-color:#7c6ff755}
+.q-card.active{border-color:#7c6ff7;box-shadow:0 0 20px rgba(124,111,247,0.15)}
+.q-card.hidden{display:none}
 .q-top{display:flex;align-items:center;gap:8px;margin-bottom:11px}
 .q-num{font-size:11px;font-weight:700;color:#7c6ff7;background:#1a1530;padding:2px 9px;border-radius:99px;border:1px solid #2d2060}
 .q-kind{font-size:11px;color:#475569}
 .q-mark{font-size:11px;color:#475569;margin-left:auto}
 .q-text{font-size:14px;color:#e2e8f0;line-height:1.65;margin-bottom:13px}
+.q-timer{font-size:13px;color:#475569;margin-bottom:13px;display:flex;align-items:center;gap:8px}
+.q-timer .time-left{font-weight:700;color:#7c6ff7;font-family:monospace;font-size:16px}
+.q-timer .time-left.warning{color:#f59e0b}
+.q-timer .time-left.danger{color:#ef4444;animation:blink 1s infinite}
 .options{display:flex;flex-direction:column;gap:7px}
 .opt{display:flex;align-items:center;gap:9px;background:#1a1d2e;border:1px solid #1e2340;border-radius:8px;padding:9px 12px;cursor:pointer;font-size:13px;color:#94a3b8;transition:all 0.15s;user-select:none}
 .opt:hover{background:#1e2340}
@@ -91,6 +97,12 @@ video,.screen-placeholder{width:100%;border-radius:8px;border:2px solid #1e2340;
 .modal p{font-size:13px;color:#64748b;line-height:1.7;margin-bottom:20px}
 .modal-btn{padding:11px;border:none;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;width:100%}
 .modal-btn.primary{background:#7c6ff7;color:#fff}
+.nav-buttons{display:flex;gap:10px;margin-top:10px}
+.nav-btn{padding:8px 16px;background:#1a1d2e;border:1px solid #2d3148;border-radius:8px;color:#94a3b8;cursor:pointer;font-size:13px;transition:all 0.2s}
+.nav-btn:hover:not(:disabled){background:#2d3148;color:#e2e8f0}
+.nav-btn:disabled{opacity:0.4;cursor:not-allowed}
+.nav-btn.primary{background:#7c6ff7;border-color:#7c6ff7;color:#fff}
+.nav-btn.primary:hover:not(:disabled){background:#6d5fe6}
 </style>
 </head>
 <body>
@@ -108,7 +120,9 @@ video,.screen-placeholder{width:100%;border-radius:8px;border:2px solid #1e2340;
     <h3>📋 Exam start</h3>
     <p>Exam <strong style="color:#f1f5f9">record</strong>:<br><br>
     📷 <strong style="color:#a78bfa">Webcam</strong> — Face<br>
-    🖥️ <strong style="color:#38bdf8">Screen</strong> — Look<br><br><strong>video</strong>.</p>
+    🖥️ <strong style="color:#38bdf8">Screen</strong> — Look<br><br>
+    ⏱️ <strong style="color:#f59e0b">40 seconds per question</strong> — Auto next<br>
+    <strong style="color:#f1f5f9">video</strong>.</p>
     <button class="modal-btn primary" onclick="startEverything()">✅ Exam Start</button>
   </div>
 </div>
@@ -129,27 +143,38 @@ video,.screen-placeholder{width:100%;border-radius:8px;border:2px solid #1e2340;
       <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
     </div>
 
-    {% for q in questions %}
-    <div class="q-card" id="card-{{ q.id }}">
-      <div class="q-top">
-        <span class="q-num">Q{{ q.id }}</span>
-        <span class="q-kind">{% if q.type == 'mcq' %}MCQ{% else %}Written{% endif %}</span>
-        <span class="q-mark">{{ q.marks }} marks</span>
-      </div>
-      <div class="q-text">{{ q.question|e }}</div>
-      {% if q.type == 'mcq' %}
-      <div class="options">
-        {% for opt in q.options %}
-        <div class="opt" id="opt-{{ q.id }}-{{ loop.index0 }}" onclick="pickMCQ({{ q.id }}, {{ loop.index0 }}, this)">
-          <div class="opt-circle"></div><span>{{ opt|e }}</span>
-        </div>
-        {% endfor %}
-      </div>
-      {% else %}
-      <textarea id="txt-{{ q.id }}" placeholder="Answer..." oninput="pickText({{ q.id }}, this.value)"></textarea>
-      {% endif %}
+    <div class="q-timer" id="qTimer">
+      ⏱️ Time for this question: <span class="time-left" id="qTimeLeft">40</span>s
     </div>
-    {% endfor %}
+
+    <div id="questionsContainer">
+      {% for q in questions %}
+      <div class="q-card {% if loop.first %}active{% else %}hidden{% endif %}" id="card-{{ q.id }}" data-qid="{{ q.id }}">
+        <div class="q-top">
+          <span class="q-num">Q{{ q.id }}</span>
+          <span class="q-kind">{% if q.type == 'mcq' %}MCQ{% else %}Written{% endif %}</span>
+          <span class="q-mark">{{ q.marks }} marks</span>
+        </div>
+        <div class="q-text">{{ q.question|e }}</div>
+        {% if q.type == 'mcq' %}
+        <div class="options">
+          {% for opt in q.options %}
+          <div class="opt" id="opt-{{ q.id }}-{{ loop.index0 }}" onclick="pickMCQ({{ q.id }}, {{ loop.index0 }}, this)">
+            <div class="opt-circle"></div><span>{{ opt|e }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <textarea id="txt-{{ q.id }}" placeholder="Answer..." oninput="pickText({{ q.id }}, this.value)"></textarea>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="nav-buttons">
+      <button class="nav-btn" id="prevBtn" onclick="prevQuestion()" disabled>◀ Previous</button>
+      <button class="nav-btn primary" id="nextBtn" onclick="nextQuestion()">Next ▶</button>
+    </div>
 
     <div class="sub-wrap">
       <button class="btn-sub" id="btnSub" onclick="submitExam()">✅ Exam Submit</button>
@@ -222,12 +247,104 @@ let screenRecorder = null;
 let camBlobs = [];
 let screenBlobs = [];
 
+// ===== PER-QUESTION TIMER =====
+const QUESTION_TIME = 40; // 40 seconds per question
+let qTimerRef = null;
+let qTimeLeft = QUESTION_TIME;
+let currentQuestionIndex = 0;
+let questionIds = [];
+
+// ===== INITIALIZE =====
+function initQuestions() {
+  const cards = document.querySelectorAll('.q-card');
+  cards.forEach((card, index) => {
+    questionIds.push(parseInt(card.dataset.qid));
+  });
+  showQuestion(0);
+}
+
+function showQuestion(index) {
+  // Hide all questions
+  document.querySelectorAll('.q-card').forEach(c => c.classList.add('hidden'));
+
+  // Show current question
+  const currentCard = document.getElementById('card-' + questionIds[index]);
+  if (currentCard) {
+    currentCard.classList.remove('hidden');
+    currentCard.classList.add('active');
+  }
+
+  // Update nav buttons
+  document.getElementById('prevBtn').disabled = (index === 0);
+  document.getElementById('nextBtn').disabled = (index === TOTAL - 1);
+
+  // Start question timer
+  startQuestionTimer();
+}
+
+function nextQuestion() {
+  if (currentQuestionIndex < TOTAL - 1) {
+    // Save current answer if any
+    currentQuestionIndex++;
+    showQuestion(currentQuestionIndex);
+  }
+}
+
+function prevQuestion() {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    showQuestion(currentQuestionIndex);
+  }
+}
+
+function startQuestionTimer() {
+  // Clear any existing timer
+  if (qTimerRef) {
+    clearInterval(qTimerRef);
+    qTimerRef = null;
+  }
+
+  qTimeLeft = QUESTION_TIME;
+  updateQTimerDisplay();
+
+  qTimerRef = setInterval(function() {
+    qTimeLeft--;
+    updateQTimerDisplay();
+
+    if (qTimeLeft <= 0) {
+      clearInterval(qTimerRef);
+      qTimerRef = null;
+      // Auto move to next question
+      if (currentQuestionIndex < TOTAL - 1) {
+        // If MCQ not answered, mark as unanswered (leave blank)
+        log("Time up! Moving to next question...", "w");
+        currentQuestionIndex++;
+        showQuestion(currentQuestionIndex);
+      } else {
+        // Last question time up, auto submit
+        log("Time up! Auto-submitting exam...", "w");
+        submitExam();
+      }
+    }
+  }, 1000);
+}
+
+function updateQTimerDisplay() {
+  const el = document.getElementById('qTimeLeft');
+  if (el) {
+    el.textContent = qTimeLeft;
+    el.className = 'time-left' + (qTimeLeft <= 10 ? ' danger' : qTimeLeft <= 20 ? ' warning' : '');
+  }
+}
+
+// ===== ORIGINAL FUNCTIONS =====
 async function startEverything() {
   document.getElementById("permModal").classList.remove("show");
   await startCamera();
   await startScreen();
   startTimer();
   loadFaceModel();
+  initQuestions();
 }
 
 async function startCamera() {
@@ -369,6 +486,11 @@ function updateProg() {
 }
 
 async function submitExam() {
+  if (qTimerRef) {
+    clearInterval(qTimerRef);
+    qTimerRef = null;
+  }
+
   var btn = document.getElementById("btnSub");
   btn.disabled = true;
   btn.textContent = "Submit ho raha hai...";
